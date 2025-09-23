@@ -17,14 +17,15 @@ async function query(queryObject) {
   // Conecta-se de fato ao banco de dados.
   await client.connect();
 
-  // Executa o comando SQL que foi passado para a função (queryObject).
-  const result = await client.query(queryObject);
-
-  // Fecha a conexão com o banco de dados para liberar recursos.
-  await client.end();
-
-  // Retorna o resultado do comando.
-  return result;
+  try {
+    const result = await client.query(queryObject);
+    return result;
+  } catch (error) {
+    console.error(error);
+    a;
+  } finally {
+    await client.end();
+  }
 }
 
 // Exporta a função "query" para que outros arquivos (como o index.js) possam usá-la.
