@@ -14,15 +14,13 @@ async function query(queryObject) {
     password: process.env.POSTGRES_PASSWORD,
   });
 
-  // Conecta-se de fato ao banco de dados.
-  await client.connect();
-
   try {
+    await client.connect();
     const result = await client.query(queryObject);
     return result;
   } catch (error) {
     console.error(error);
-    a;
+    throw error;
   } finally {
     await client.end();
   }
