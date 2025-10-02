@@ -7,7 +7,7 @@ async function query(queryObject) {
   // Essas credenciais (host, porta, usuário, etc.) são pegas de "variáveis de ambiente" (process.env).
   // Isso é uma boa prática para não deixar senhas e dados sensíveis expostos no código.
   const client = new Client({
-    host: process.env.POSTGRES_LOCALHOST,
+    host: process.env.POSTGRES_HOST,
     port: process.env.POSTGRES_PORT,
     user: process.env.POSTGRES_USER,
     database: process.env.POSTGRES_DB,
